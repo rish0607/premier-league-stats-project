@@ -7,6 +7,8 @@ import "./PlayerStats.css";
 export default function PlayerStats() {
   const { teamId } = useParams();
   const navigate = useNavigate();
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
 
   const team = teamsData.find(
     (t) => t.id === Number(teamId)
@@ -22,14 +24,33 @@ export default function PlayerStats() {
   const teamMap = {
     "Newcastle United": "Newcastle Utd",
     "Manchester United": "Manchester Utd",
-    "Tottenham": "Tottenham Hotspur",
-    "Wolves": "Wolverhampton Wanderers"
+    "Tottenham": "Tottenham",
+    "Wolves": "Wolves",
+    "Nottingham Forest": "Nott'ham Forest"
   };
 
   const csvTeam = teamMap[team.name] || team.name;
 
   const teamBackgrounds = {
-  Arsenal: "/team-backgrounds/arsenal-2.jpg"
+  "Arsenal": "/team-backgrounds/arsenal-2.jpg",
+  "Chelsea": "/team-backgrounds/chelsea-bg.png",
+  "Newcastle United": "/team-backgrounds/newcastle-bg.png",
+  "Manchester City": "/team-backgrounds/mancity-bg.jpg",
+  "Manchester United": "/team-backgrounds/manutd-bg-png.png",
+  "West Ham United": "/team-backgrounds/westham-bg.jpg",
+  "Tottenham": "/team-backgrounds/tottenham-bg.jpg",
+  "Brighton": "/team-backgrounds/brighton-bg.jpg",
+  "Fulham": "/team-backgrounds/fulham-bg.jpg",
+  "Brentford": "/team-backgrounds/brentford-bg.jpg",
+  "Nottingham Forest": "/team-backgrounds/nottingham-bg.jpg",
+  "Liverpool": "/team-backgrounds/liverpool-bg.jpg",
+  "Aston Villa": "/team-backgrounds/astonvilla-bg-2.jpg",
+  "Leicester City": "/team-backgrounds/leicester-bg.jpg",
+  "Wolves": "/team-backgrounds/wolves-bg.jpg",
+  "Bournemouth": "/team-backgrounds/bournemouth-bg.jpg",
+  "Ipswich Town": "/team-backgrounds/ipswich-bg.jpg",
+  "Crystal Palace": "/team-backgrounds/palace-bg-2.jpg",
+  "Southampton": "/team-backgrounds/southampton-bg.jpg"
   };
 
   useEffect(() => {
@@ -70,7 +91,7 @@ export default function PlayerStats() {
   return (
     <div className="player-page"
       style={{
-      backgroundImage: `url(${teamBackgrounds[team.name]})`,
+      backgroundImage: `url(/player-backgrounds/player-bg-3.png)`,
       backgroundSize: "cover",
       backgroundPosition: "center",
       backgroundRepeat: "no-repeat",
@@ -80,11 +101,25 @@ export default function PlayerStats() {
       <header className="player-header">
         <button
           className="back-btn"
-          onClick={() => navigate("/")}
+          onClick={() => navigate(-1)}
         >
-          ← Back
+          <svg
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M15 18L9 12L15 6"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </button>
 
+        <div className="team-header-card">
         <img
           src={team.logo}
           alt={team.name}
@@ -96,6 +131,7 @@ export default function PlayerStats() {
         <p className="player-subtitle">
           2024-25 Player Statistics
         </p>
+        </div>
       </header>
 
       <div className="player-filter-section">

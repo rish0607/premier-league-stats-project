@@ -19,6 +19,7 @@ import BournemouthLogo from "../assets/team-logos/Bournemouth.png";
 import WolvesLogo from "../assets/team-logos/wolves.png";
 import SouthamptonLogo from "../assets/team-logos/Southampton.jpeg";
 import LutonTownLogo from "../assets/team-logos/Luton.png";
+import NewcastleUnitedLogo from "../assets/team-logos/Newcastle.png";
 
 
 // Premier League Teams Data with Statistics
@@ -116,6 +117,7 @@ export const teamsData = [
     name: "Chelsea",
     position: 4,
     logo: ChelseaLogo,
+    color: "#2853ee",
      stats: {
       played: 38,
       wins: 20,
@@ -367,7 +369,7 @@ export const teamsData = [
   id: 21,
   name: "Newcastle United",
   position: 5,
-  logo: LutonTownLogo,
+  logo: NewcastleUnitedLogo,
   color: "#241F20",
   stats: {
     played: 38,

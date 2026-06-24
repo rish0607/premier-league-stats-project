@@ -2,13 +2,19 @@ import React, { useState } from 'react';
 import TeamCard from './components/TeamCard';
 import { teamsData } from './data/teams';
 import './App.css';
-import pllogo from './assets/public/pl-logo3.jpeg';
+import pllogo from "./assets/Premier_League_Logo.svg";
 import { Route, Routes } from 'react-router-dom';
 import PlayerStats from './pages/PlayerStats';
-
+import PlayerDetails from './pages/PlayerDetails';
+import { useNavigate } from 'react-router-dom';
+import Awards from "./pages/Awards";
+import { useEffect } from 'react';
 
 function App() {
   const [sortBy, setSortBy] = useState('position');
+  const navigate = useNavigate();
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  
 
   const sortedTeams = [...teamsData].sort((a, b) => {
     switch (sortBy) {
@@ -25,46 +31,150 @@ function App() {
     }
   });
 
+  useEffect(() => {
+  const handleScroll = () => {
+    setShowScrollTop(window.scrollY > 400);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
+
   return (
     <Routes>
 
-    <Route 
-      path="/" 
+      <Route
+      path="/"
       element={
-    <div className="app">
-      <header className="header">
-        <div className="header-content">
-          <div className="logo-section">
-            <div className="main-title">
-              <img alt="Premier League Logo" className="main-logo" src={pllogo}/>
+        <div className="app">
+
+          {/* HERO SECTION */}
+
+          <section className="hero-section">
+
+            <div className="hero-overlay"></div>
+
+            <div className="hero-content">
+
+              <img
+                src={pllogo}
+                alt="Premier League"
+                className="hero-logo"
+              />
+
+              <h1 className="hero-title">
+                PREMIER LEAGUE
+              </h1>
+
+              <div className="blinking-year">
+                YEAR 2024-2025
+              </div>
+
+              <div className="hero-buttons">
+
+                <button
+                  className="hero-btn"
+                  onClick={() =>
+                    document
+                      .getElementById("points-table")
+                      ?.scrollIntoView({
+                        behavior: "smooth"
+                      })
+                  }
+                >
+                  POINTS TABLE
+                </button>
+
+                <button
+                  className="hero-btn secondary"
+                  onClick={() =>
+                    navigate("/awards")
+                  }
+                >
+                  INDIVIDUAL AWARDS
+                </button>
+
+              </div>
+
             </div>
-            <p className="subtitle">2024-25 Season Statistics</p>
-          </div>
+
+          </section>
+
+          {/* POINTS TABLE */}
+
+          <section
+            id="points-table"
+            className="points-section"
+          >
+
+            <div className="section-heading">
+              PREMIER LEAGUE TABLE
+            </div>
+
+            <div className="teams-container">
+              {sortedTeams.map((team) => (
+                <TeamCard
+                  key={team.id}
+                  team={team}
+                />
+              ))}
+            </div>
+
+          </section>
+
+          <footer className="footer">
+            <p>
+              © 2024-25 Premier League Statistics Dashboard
+            </p>
+          </footer>
+
+
+              {
+  showScrollTop && (
+    <button
+      className="scroll-top-btn"
+      onClick={scrollToTop}
+    >
+      <svg
+        width="34"
+        height="34"
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+        <path
+          d="M18 15L12 9L6 15"
+          stroke="currentColor"
+          strokeWidth="3.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </button>
+    ) }
+
         </div>
-      </header>
+      }
+    />  
 
-      <main className="main-content">
-        <div className="container">
-          
-
-          {/* Teams Grid */}
-          <div className="teams-container">
-            {sortedTeams.map((team) => (
-              <TeamCard key={team.id} team={team} />
-            ))}
-          </div>
-
-        </div>
-      </main>
-
-      <footer className="footer">
-        <p>© 2024-25 Premier League Stats. Click on any team to view detailed statistics and player information.</p>
-      </footer>
-    </div>
-  }
-
-  />  
   <Route path="/team/:teamId" element={<PlayerStats />} />
+
+  <Route
+    path="/player/:teamId/:playerName"
+    element={<PlayerDetails />}
+  />
+
+  <Route
+    path="/awards"
+    element={<Awards />}
+  />
 
   </Routes>
   );
