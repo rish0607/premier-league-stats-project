@@ -331,3 +331,37 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 768px) {
+
+  .players-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .player-tile {
+    min-height: 240px;
+    padding: 12px;
+  }
+
+  .player-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .player-tile h3 {
+    font-size: 0.9rem;
+  }
+
+  .player-mini-stats {
+    font-size: 0.8rem;
+  }
+
+  .team-header-card {
+    width: 95%;
+  }
+
+  .team-page-logo {
+    width: 80px;
+  }
+}

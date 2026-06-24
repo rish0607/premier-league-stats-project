@@ -169,3 +169,27 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 768px) {
+
+  .awards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .award-card {
+    min-height: auto;
+  }
+
+  .award-player-img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .awards-header-card {
+    width: 95%;
+  }
+
+  .awards-header-card h1 {
+    font-size: 2rem;
+  }
+}

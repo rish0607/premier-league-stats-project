@@ -359,3 +359,46 @@
   width: 34px;
   height: 34px;
 }
+
+@media (max-width: 768px) {
+
+  .player-top-section {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .player-overview,
+  .player-info-card,
+  .profile-radar-card {
+    width: 100%;
+  }
+
+  .player-detail-image {
+    width: 180px;
+    max-width: 90%;
+  }
+
+  .player-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-card {
+    width: 100%;
+  }
+
+  .dashboard-card h2 {
+    font-size: 1.1rem;
+  }
+
+  .chart-description {
+    font-size: 0.85rem;
+  }
+}
