@@ -9,7 +9,7 @@ import BrightonLogo from "../assets/team-logos/brighton.jpeg";
 import ManUnitedLogo from "../assets/team-logos/Man UTD.png";
 import FulhamLogo from "../assets/team-logos/Fulham.png";
 import BrentfordLogo from "../assets/team-logos/brentford.jpeg";
-import WestHamLogo from "../assets/team-logos/West Ham.png";
+import WestHamLogo from "../assets/team-logos/West ham.png";
 import CrystalPalaceLogo from "../assets/team-logos/Palace.png";
 import IpswichTownLogo from "../assets/team-logos/Ipswich.png";
 import LeicesterCityLogo from "../assets/team-logos/leicester.jpeg";
@@ -17,7 +17,7 @@ import EvertonLogo from "../assets/team-logos/Everton.png";
 import NottinghamForestLogo from "../assets/team-logos/Forrest.png";
 import BournemouthLogo from "../assets/team-logos/Bournemouth.png";
 import WolvesLogo from "../assets/team-logos/wolves.png";
-import SouthamptonLogo from "../assets/team-logos/Southampton.jpeg";
+import SouthamptonLogo from "../assets/team-logos/southampton.jpeg";
 import LutonTownLogo from "../assets/team-logos/Luton.png";
 import NewcastleUnitedLogo from "../assets/team-logos/Newcastle.png";
 
