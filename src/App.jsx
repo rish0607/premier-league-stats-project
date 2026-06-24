@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import TeamCard from './components/TeamCard';
 import { teamsData } from './data/teams';
 import './App.css';
@@ -8,7 +8,6 @@ import PlayerStats from './pages/PlayerStats';
 import PlayerDetails from './pages/PlayerDetails';
 import { useNavigate } from 'react-router-dom';
 import Awards from "./pages/Awards";
-import { useEffect } from 'react';
 
 function App() {
   const [sortBy, setSortBy] = useState('position');
